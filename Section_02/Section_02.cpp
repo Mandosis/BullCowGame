@@ -7,37 +7,54 @@
 
 using namespace std;
 
-void printIntro();
-string getGuessAndPrintBack();
+void PrintIntro();
+void PlayGame();
+string GetGuess();
+bool AskToPlayAgain();
 
 int main() {
 
-	constexpr int NUMBER_OF_TURNS = 5;
 
-	printIntro();
-
-	for (int it = 0; it < NUMBER_OF_TURNS; it++) {
-		getGuessAndPrintBack();
-		cout << endl;
-	}
+	PrintIntro();
+	PlayGame();
+	AskToPlayAgain();
 
 	return 0;
 }
 
-void printIntro() {
+void PrintIntro() {
 	constexpr int WORD_LENGTH = 5;
 
 	cout << "welcome to Bulls and Cows, a fun word game." << endl;
 	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << endl << endl;
 }
 
-string getGuessAndPrintBack() {
+void PlayGame() {
+	constexpr int NUMBER_OF_TURNS = 5;
+
+	for (int it = 0; it < NUMBER_OF_TURNS; it++) {
+		string Guess = GetGuess();
+
+		cout << "Your guess was: " << Guess << endl;
+		cout << endl;
+	}
+}
+
+string GetGuess() {
 	string guess = "";
 
 	cout << "Enter your guess: ";
 	getline(cin, guess);
 
-	cout << "Your guess was: " << guess << endl;
-
 	return guess;
+}
+
+bool AskToPlayAgain() {
+	cout << "Do you want to play again? ";
+	string Response = "";
+	getline(cin, Response);
+
+	cout << "Is it y? " << (Response[0] == 'y' || Response[0] == 'Y') << endl;
+
+	return false;
 }
