@@ -4,12 +4,11 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
-
-using namespace std;
+#include "FBullCowGame.h";
 
 void PrintIntro();
 void PlayGame();
-string GetGuess();
+std::string GetGuess();
 bool AskToPlayAgain();
 
 int main() {
@@ -27,34 +26,35 @@ int main() {
 void PrintIntro() {
 	constexpr int WORD_LENGTH = 5;
 
-	cout << "welcome to Bulls and Cows, a fun word game." << endl;
-	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << endl << endl;
+	std::cout << "welcome to Bulls and Cows, a fun word game." << std::endl;
+	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << std::endl << std::endl;
 }
 
 void PlayGame() {
+	FBullCowGame BCGame;
 	constexpr int NUMBER_OF_TURNS = 5;
 
 	for (int it = 0; it < NUMBER_OF_TURNS; it++) {
-		string Guess = GetGuess();
+		std::string Guess = GetGuess();
 
-		cout << "Your guess was: " << Guess << endl;
-		cout << endl;
+		std::cout << "Your guess was: " << Guess << std::endl;
+		std::cout << std::endl;
 	}
 }
 
-string GetGuess() {
-	string guess = "";
+std::string GetGuess() {
+	std::string guess = "";
 
-	cout << "Enter your guess: ";
-	getline(cin, guess);
+	std::cout << "Enter your guess: ";
+	std::getline(std::cin, guess);
 
 	return guess;
 }
 
 bool AskToPlayAgain() {
-	cout << "Do you want to play again? (Y/n) ";
-	string Response = "";
-	getline(cin, Response);
+	std::cout << "Do you want to play again? (Y/n) ";
+	std::string Response = "";
+	std::getline(std::cin, Response);
 
 	return (Response[0] == 'y' || Response[0] == 'Y');
 }
