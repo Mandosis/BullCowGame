@@ -48,7 +48,7 @@ void PlayGame() {
 		std::cout << std::endl;
 	}
 
-	// TODO summarise game
+	// TODO summarize game
 }
 
 std::string GetGuess() {
@@ -68,3 +68,5 @@ bool AskToPlayAgain() {
 
 	return (Response[0] == 'y' || Response[0] == 'Y');
 }
+
+// Test comment
